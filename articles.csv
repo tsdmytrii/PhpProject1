@@ -1,0 +1,201 @@
+Title,Author,Date,Text,image
+PHP is much better than you think,Fabien Potencier,07/04/12,"
+
+Rants about PHP are everywhere, and they even come from smart guys. When Jeff Atwood wrote yet another rant about PHP, it made me think about the good parts of PHP.
+
+The biggest problem of these rants is that they come from people stuck in the old days of PHP. They either don't care or they don't want to admit that PHP actually evolves at a very fast pace, both at the language level but also at the community level. In fact, it evolves much faster than any other language or web platform. It has not always been the case, but the last 5 years have been an amazing journey for PHP.
+
+Before talking about the amazing things the PHP community has achieved recently, let's have a look at some interesting numbers: PHP is used by 77.9% of all the websites whose server-side programming language is known. WordPress is used by 16.6% of all the websites in the world. If you have a look at the top three CMSes, for the websites that use a monitored content management system: Wordpress is first with 54.3%, Joomla is second with 9.2%, and Drupal is third with 6.8%. Three products written in PHP.
+
+PHP must have done something right, no?
+
+Now, let me tell you a secret, the PHP ""tour de force"": Despite the changes over the years, PHP is still the easiest language to learn for non-technical people: it allows anyone to create dynamic websites faster than with any other technologies, it allows anyone to host websites cheaply and without any hassles. PHP is probably not the best designed language in the world, but it lets you get things done, and you can't argue with that.
+PHP, the Language
+
+PHP 5.0 (released in 2004) brought us a very solid object model... wait a minute, I'm talking about something released almost 8 years ago. Fast forward now. The latest PHP release, PHP 5.4, comes with all the bells and whistles you might dream of in a modern web language: yes, PHP supports namespaces; yes, PHP supports closures; yes, PHP supports traits.
+
+It took some time, but PHP 5.4 also comes with some nice syntactic sugar that makes the whole experience better than ever: yes, PHP supports [] to define arrays; yes, PHP supports calling a method on a newly created object ((new Foo())->bar()); yes, PHP supports getting an array item from any expression ($foo->bar()[1]).
+
+PHP has even learned from its mistakes: register_globals and magic_quotes are definitely gone.
+
+Last, but not the least, PHP even comes with a built-in web server that eases local testing... and it starts in a matter of micro-seconds.
+
+Next challenges: How do we ""upgrade"" all the old tutorials talking about PHP on the web? What is the best way to support the WebSocket technology in a PHP application?
+PHP, the Ecosystem
+
+Having a good language is great, but having a great ecosystem is even better. And the PHP ecosystem has evolved a lot in the last few years.
+Git
+
+I won't talk too much about this one. Git is everywhere and PHP embraced Git pretty fast. Almost all major PHP libraries, frameworks, and products are now using Git, including PHP itself.
+Composer
+
+Two years ago, I wanted to get rid of my ugly-PEAR-hack I did in symfony 1 to support plugins. I wanted to replace it with something that was able to manage project dependencies, not a global installer like PEAR. Managing dependencies is not an easy task, so I tried to find the best algorithm to manage software dependencies; I had a look at everything: from Perl to Ruby, from Debian to Redhat. Nothing was satisfactory: only homegrown solutions that happen to work... empirically. Then, I stumbled upon ZYpp. That was it. ZYpp uses a SAT solver to manage dependencies. Fast forward. Thanks to the hard work of Nils Adermann and Jordi Boggiano, PHP now has one of the best dependency manager, Composer.
+
+Yes, PHP has a better dependency manager than any other languages.
+
+And thanks to Git, Composer, and the PHP built-in web server, it has never been easier to download/install/test a PHP project.
+
+Want to test Symfony (using PHP 5.4)?
+
+$ composer.phar create-project symfony/framework-standard-edition
+$ cd framework-standard-edition
+$ ./app/console server:run
+
+Want to test Silex?
+
+$ composer.phar create-project fabpot/silex-skeleton
+$ cd silex-skeleton
+$ php -S localhost:8888 -t web/
+
+Don't know Composer yet? You should learn about it. Browse Packagist, the main Composer repository: it already has 1900+ packages available and they have been installed more than a million times in less than 3 months.
+
+Next challenge: include the Composer installer in the next PHP version?
+Collaboration
+
+Community collaboration is the most important point of this post; the one I'm the most proud of. We start to see better collaboration between PHP projects, even from the very big ones, the ones you would think are large enough to not care about the others.
+
+phpBB, Drupal, eZ Publish, Symfony, and many others (phpDocumentor, PHPUnit, Behat, Zikula, Propel, Doctrine, Midgard, ...) are sharing code. Yes, they are ""competitors"" but they all understood that cross-pollination was a good thing. And Composer is a good enabler.
+
+Next challenge: Convince even more projects to join the trend.
+Conclusion
+
+Let me say it again: PHP is probably not the best language out there, and I'm the first one to scream about its quirks, but PHP is the best web platform... ever.
+",http://cdn.blog.hostpro.ua/wp-content/uploads/2011/09/php.png
+Parse Web Pages with PHP Simple HTML DOM Parser, David Walsh ,06/15/11,"For those of you who have had the pleasure of following me on Twitter (...), you probably know that I'm a complete soccer (football) fanatic.  I even started a separate Twitter account to voice my footy musings.  If you follow football yourself, you'll know that we've just started the international transfer window and there are a billion rumors about a billion players going to a billion clubs.  It's enough to drive you mad but I simply HAVE TO KNOW who will be in the Arsenal and Liverpool first teams next season.
+
+The problem I run into, besides all of the rubbish reports making waved, is that I don't have time to check every website on the hour.  Twitter is a big help, but there's nothing better during this time than an official report from each club's website.  To keep an eye on those reports, I'm using the power of PHP Simple HTML DOM Parser to write a tiny PHP script that shoots me an email whenever a specific page is updated.
+PHP Simple HTML DOM Parser
+
+PHP Simple HTML DOM Parser is a dream utility for developers that work with both PHP and the DOM because developers can easily find DOM elements using PHP. Here are a few sample uses of PHP Simple HTML DOM Parser:
+
+// Include the library
+include('simple_html_dom.php');
+ 
+// Retrieve the DOM from a given URL
+$html = file_get_html('http://davidwalsh.name/');
+
+// Find all ""A"" tags and print their HREFs
+foreach($html->find('a') as $e) 
+    echo $e->href . '<br>';
+
+// Retrieve all images and print their SRCs
+foreach($html->find('img') as $e)
+    echo $e->src . '<br>';
+
+// Find all images, print their text with the ""<>"" included
+foreach($html->find('img') as $e)
+    echo $e->outertext . '<br>';
+
+// Find the DIV tag with an id of ""myId""
+foreach($html->find('div#myId') as $e)
+    echo $e->innertext . '<br>';
+
+// Find all SPAN tags that have a class of ""myClass""
+foreach($html->find('span.myClass') as $e)
+    echo $e->outertext . '<br>';
+
+// Find all TD tags with ""align=center""
+foreach($html->find('td[align=center]') as $e)
+    echo $e->innertext . '<br>';
+    
+// Extract all text from a given cell
+echo $html->find('td[align=""center""]', 1)->plaintext.'<br><hr>';
+
+Like I said earlier, this library is a dream for finding elements, just as the early JavaScript frameworks and selector engines have become. Armed with the ability to pick content from DOM nodes with PHP, it's time to analyze websites for changes.
+The Script
+
+The following script checks two websites for changes:
+
+// Pull in PHP Simple HTML DOM Parser
+include(""simplehtmldom/simple_html_dom.php"");
+
+// Settings on top
+$sitesToCheck = array(
+          // id is the page ID for selector
+          array(""url"" => ""http://www.arsenal.com/first-team/players"", ""selector"" => ""#squad""),
+          array(""url"" => ""http://www.liverpoolfc.tv/news"", ""selector"" => ""ul[style='height:400px;']"")
+        );
+$savePath = ""cachedPages/"";
+$emailContent = """";
+
+// For every page to check...
+foreach($sitesToCheck as $site) {
+  $url = $site[""url""];
+  
+  // Calculate the cachedPage name, set oldContent = """";
+  $fileName = md5($url);
+  $oldContent = """";
+  
+  // Get the URL's current page content
+  $html = file_get_html($url);
+  
+  // Find content by querying with a selector, just like a selector engine!
+  foreach($html->find($site[""selector""]) as $element) {
+    $currentContent = $element->plaintext;;
+  }
+  
+  // If a cached file exists
+  if(file_exists($savePath.$fileName)) {
+    // Retrieve the old content
+    $oldContent = file_get_contents($savePath.$fileName);
+  }
+  
+  // If different, notify!
+  if($oldContent && $currentContent != $oldContent) {
+    // Here's where we can do a whoooooooooooooole lotta stuff
+    // We could tweet to an address
+    // We can send a simple email
+    // We can text ourselves
+    
+    // Build simple email content
+    $emailContent = ""David, the following page has changed!\n\n"".$url.""\n\n"";
+  }
+  
+  // Save new content
+  file_put_contents($savePath.$fileName,$currentContent);
+}
+
+// Send the email if there's content!
+if($emailContent) {
+  // Sendmail!
+  mail(""david@davidwalsh.name"",""Sites Have Changed!"",$emailContent,""From: alerts@davidwalsh.name"",""\r\n"");
+  // Debug
+  echo $emailContent;
+}
+
+The code and comments are self-explanatory.  I've set the script up such that I get one ""digest"" alert if many of the pages change.  The script is the hard part -- to enact the script, I've set up a CRON job to run the script every 20 minutes.
+
+This solution isn't specific to just spying on footy -- you could use this type of script on any number of sites.  This script, however, is a bit simplistic in all cases.  If you wanted to spy on a website that had extremely dynamic code (i.e. a timestamp was in the code), you would want to create a regular expressions that would isolate the content to just the block you're looking for. Since each website is constructed differently, I'll leave it up to you to create page-specific isolators. Have fun spying on websites though...and be sure to let me know if you hear a good, reliable footy rumor!",http://web-forsite.ru/images/stories/demo/content/apache_php_mysql_logo.JPG
+,,,,
+,,,,
+,,,,
+The Skinny on IE's Update Policy,Paul Irish,06/29/12,"Every month, WebKit, Firefox and Opera are shipping incredible features; IE10 is also going to settle up and even out those HTML5 Test scores (plus some features they may debut, like Grid Layout!). But while these features are becoming available in some browsers, most of us can't use them because we have a sizable audience who have been left behind on old browsers. A while ago I made a big fuss about IE's lack of solid upgrade path and how it meant we'd end up with 10 major versions of IE in the wild. But luckily, things took a turn for the better when Microsoft announced a new autoupdate policy for IE.
+
+I wanted to take a moment to explain what this IE update policy means for us web developers.
+
+The big change is how IE now interacts with Windows Update: Before you had to opt-in to have ""Recommended"" updates installed automatically. It's likely few folks did. Now, IE upgrades are shipping as ""Important"" and this class of updates are defaulted to install automatically. A user can still opt-out and immediately after the announcement of this feature they also published details on how enterprises can opt-out. But still, this is a good move, it helps.
+
+The policy manifests as:
+
+    Windows XP holdouts on IE6 or IE7 get the boot up to IE8
+    Windows Vista and 7 users still on IE7 or even on IE8 get shunted up to IE9
+    IE10 only works on Win7+, and while no policy has been published for Win7 users, it's likely any IE8/IE9 users will be moved up to IE10.
+
+A very smart policy call was that this update policy also includes all of China, which is important because most of their Windows installs are not genuine. Microsoft decided they should get the IE bump anyway, which is great because China has been dominated by IE6 and IE8 for ages.
+
+This update procedure was scheduled to start in Australia and Brazil in January 2012. If we look at what happened in Brazil, we have a good shift of users but it's flattened out with a nontrivial amount of left behind users: (see the two blue lines in the chart below)
+
+(Source: StatCounter Global Stats – Browser Version (Partially Combined) Market Share)
+
+Australia has a similar swap of users from IE8 to IE9 but IE8 still remains steady above 10% overall share there.
+
+Microsoft is in a tough spot in that they have enterprise customers who have developed their intranet applications in an extremely poor manner and they break outside of old browsers. But we're going to need some more pushes from them and us, the developer community, to get in a better state. We want to develop for the web platform of now, not the platform of four years ago.
+
+TL;DR: There is now a policy in place, but evidence indicates that it's not as effective in eradicating these zombie browsers as what we need. Personal opinion: we need to do better.
+
+Hopefully this clarifies a bit about the mechanics of the update procedure. Please do correct me if anything is wrong and I'll update the post.
+2012.08.07: Added TLDR. 2012.07.02: To see this update policy in better context it's probably useful to Read this Developer's Guide to browser adoption rates and check the charts from Ars Technica below.
+
+2012.09.21: Months later, the net effect of the update campaign is complete. It pushed a whole bunch of users up to IE9 but IE8 usage remains solid. :( WinXP is a big problem here, obviously. We have to explore other ways to move these users off a zombie browser…
+
+(Consider the two blue lines)",http://www.pawprint.net/images/news/1-4fac83467069c.png
