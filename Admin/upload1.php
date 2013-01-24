@@ -20,7 +20,7 @@
                     imagejpeg($img, $newpath . $name);
 
                     $f = "/var/www/PhpProject1/uploads/$id.jpeg";
-                    $newname = "$id" . "_" . "2";
+                    $newname = "$id" . "_200px";
                     $src = imagecreatefromjpeg($f);
                     $filename = "/var/www/PhpProject1/uploads/$newname.jpeg";
                     list($width, $height) = getimagesize($f);
@@ -44,7 +44,7 @@
                     $dest = imagecreatetruecolor($w, $w);
                                        imagecopyresized($dest, $src, 0, 0, 50, 50, 100, 100, 100, 100);
                                         $q = 100;
-                    $newname1 = "$id" . "_" . "3";
+                    $newname1 = "$id" . "_100px";
                     // вывод картинки и очистка памяти 
                     imagejpeg($dest, "/var/www/PhpProject1/uploads/$newname1.jpeg", $q);
                     imagedestroy($dest);
@@ -55,7 +55,7 @@
 
                     imagejpeg($img, $newpath . $name);
                     $f = "/var/www/PhpProject1/uploads/$id.jpeg";
-                    $newname = "$id" . "_" . "2";
+                    $newname = "$id" . "_200px";
                     $src = imagecreatefromjpeg($f);
                     $filename = "/var/www/PhpProject1/uploads/$newname.jpeg";
                     list($width, $height) = getimagesize($f);
@@ -80,7 +80,7 @@
                     $dest = imagecreatetruecolor($w, $w);
                                        imagecopyresized($dest, $src, 0, 0, 50, 50, 100, 100, 100, 100);
                                         $q = 100;
-                    $newname1 = "$id" . "_" . "3";
+                    $newname1 = "$id" . "_100px";
                     // вывод картинки и очистка памяти 
                     imagejpeg($dest, "/var/www/PhpProject1/uploads/$newname1.jpeg", $q);
                     imagedestroy($dest);
@@ -90,7 +90,7 @@
 
                     imagejpeg($img, $newpath . $name);
                     $f = "/var/www/PhpProject1/uploads/$id.jpeg";
-                    $newname = "$id" . "_" . "2";
+                    $newname = "$id" . "_200px";
                     $src = imagecreatefromjpeg($f);
                     $filename = "/var/www/PhpProject1/uploads/$newname.jpeg";
                     list($width, $height) = getimagesize($f);
@@ -114,7 +114,7 @@ $f = "/var/www/PhpProject1/uploads/$newname.jpeg";
                     $dest = imagecreatetruecolor($w, $w);
                                        imagecopyresized($dest, $src, 0, 0, 50, 50, 100, 100, 100, 100);
                                         $q = 100;
-                    $newname1 = "$id" . "_" . "3";
+                    $newname1 = "$id" . "_100px";
                     // вывод картинки и очистка памяти 
                     imagejpeg($dest, "/var/www/PhpProject1/uploads/$newname1.jpeg", $q);
                     imagedestroy($dest);

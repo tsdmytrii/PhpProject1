@@ -16,8 +16,8 @@ if ($row = mysql_fetch_array($result)) {
         echo "Description:<br>";
         echo $row['4'];
         echo "<br>";
-        $name = "$id" . "_2";
-        $name1 = "$id" . "_3";
+        $name = "$id" . "_200px";
+        $name1 = "$id" . "_100px";
         ?>
         <a href="" class="b-socials__link"><img src="http://localhost/PhpProject1/uploads/<?php echo "$name1"; ?>.jpeg " 
                                                 onmouseover="this.src='http://localhost/PhpProject1/uploads/<?php echo "$name"; ?>.jpeg'"
