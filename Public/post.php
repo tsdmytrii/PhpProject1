@@ -2,7 +2,7 @@
 //$link1 = mysql_connect("localhost", "root", "dimadima");
 //mysql_select_db("passwords", $link1);
 include "/var/www/PhpProject1/connect.php";
-        connect($host, $user, $pass);
+connect($host, $user, $pass);
 $id = $_GET['id'];
 $result = mysql_query("select * from posts1 where ID = $id") or die(mysql_error());
 /* Вывод выбраного поста юзером */
@@ -16,9 +16,17 @@ if ($row = mysql_fetch_array($result)) {
         echo "Description:<br>";
         echo $row['4'];
         echo "<br>";
-                
-        echo "<img src='http://localhost/PhpProject1/uploads/2.png' alt='Fuck'";
-        
+        $name = "$id" . "_2";
+        $name1 = "$id" . "_3";
+        ?>
+        <a href="" class="b-socials__link"><img src="http://localhost/PhpProject1/uploads/<?php echo "$name1"; ?>.jpeg " 
+                                                onmouseover="this.src='http://localhost/PhpProject1/uploads/<?php echo "$name"; ?>.jpeg'"
+                                                onmouseout="this.src='http://localhost/PhpProject1/uploads/<?php echo "$name1"; ?>.jpeg'"
+                                                alt="Fuck"></a>;        
+
+        <?php
+        //echo "<img class=forhover src='http://localhost/PhpProject1/uploads/$name.jpeg' alt='Fuck'";
+
         echo "</td></tr>";
     } while ($row = mysql_fetch_array($result));
 }
